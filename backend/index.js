@@ -11,8 +11,9 @@ app.use(cors());
 app.use(express.json());
 
 /* ================= ENV ================= */
-const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+const PORT = process.env.PORT || 5000; // Render will provide PORT
+const MONGO_URI = process.env.MONGO_URI; 
+const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
 
 /* ================= UPLOAD FOLDER ================= */
 const uploadDir = "uploads";
@@ -50,8 +51,6 @@ connectDB();
 /* ================= ROUTES ================= */
 
 /* ---- CREATE POST ---- */
-const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
-
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
     if (!db) return res.status(500).json({ error: "DB not connected" });
@@ -73,7 +72,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
-
 
 /* ---- GET POSTS / SEARCH USER ---- */
 app.get("/files", async (req, res) => {
@@ -116,5 +114,5 @@ app.delete("/delete/:id", async (req, res) => {
 
 /* ================= SERVER ================= */
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on ${BACKEND_URL}`);
 });
