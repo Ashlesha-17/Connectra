@@ -50,6 +50,8 @@ connectDB();
 /* ================= ROUTES ================= */
 
 /* ---- CREATE POST ---- */
+const BACKEND_URL = process.env.BACKEND_URL || `http://localhost:${PORT}`;
+
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
     if (!db) return res.status(500).json({ error: "DB not connected" });
@@ -60,7 +62,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     const post = {
       username: req.body.username,
       caption: req.body.caption,
-      file_url: `http://localhost:${PORT}/uploads/${req.file.filename}`,
+      file_url: `${BACKEND_URL}/uploads/${req.file.filename}`,
       upload_time: new Date()
     };
 
@@ -71,6 +73,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+
 
 /* ---- GET POSTS / SEARCH USER ---- */
 app.get("/files", async (req, res) => {
