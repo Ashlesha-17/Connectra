@@ -1,0 +1,127 @@
+/* 🌿 RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 🌸 MAIN CONTAINER */
+.create-post-container {
+  max-width: 420px;
+  margin: 3rem auto;
+  padding: 1.8rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 1.6rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: fadeUp 0.6s ease;
+}
+
+/* ✨ TITLE */
+.create-post-container h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1.4rem;
+}
+
+/* 📸 CAMERA PREVIEW */
+video,
+canvas {
+  width: 100%;
+  height: 320px;
+  border-radius: 1.2rem;
+  object-fit: cover;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  background: #000;
+}
+
+/* 🧾 INPUTS */
+.text-input,
+.caption-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  border-radius: 0.9rem;
+  border: none;
+  background: #f4f6fb;
+  transition: 0.3s ease;
+}
+
+.text-input:focus,
+.caption-input:focus {
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255, 65, 108, 0.35);
+}
+
+/* 📝 CAPTION HEIGHT */
+.caption-input {
+  resize: none;
+  height: 90px;
+}
+
+/* 🚀 BUTTONS */
+.upload-button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.6rem;
+  border-radius: 2rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(255, 65, 108, 0.35);
+}
+
+.upload-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(255, 65, 108, 0.45);
+}
+
+.upload-button:active {
+  transform: scale(0.96);
+}
+
+/* 🎬 CAMERA BUTTONS GROUP */
+.camera-actions {
+  display: flex;
+  gap: 0.7rem;
+}
+
+.camera-actions .upload-button {
+  width: 50%;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 480px) {
+  .create-post-container {
+    margin: 1.5rem 1rem;
+    padding: 1.4rem;
+  }
+
+  video,
+  canvas {
+    height: 260px;
+  }
+}
+
+/* 🌟 ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
